@@ -12,6 +12,7 @@ const TimePicker = ({ index }) => {
                     selected={context.data[index].date}
                     onChange={date => context.handleTimeChange(date, index)}
                     timeInputLabel="Time:"
+                    locale="en-UK"                    
                     dateFormat="dd/MM/yyyy HH:mm"
                     showTimeInput
                 />

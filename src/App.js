@@ -42,7 +42,9 @@ const OutputComp = () => {
             {context => (
                 <Fragment>
                     <div style={{ marginTop: 20 }}>
-                        {JSON.stringify(context.data)}
+                        {                  
+                        `<script>var feedDataGaming = ${JSON.stringify(context.data)}</script>`
+                        }
                     </div>
                 </Fragment>
             )}
