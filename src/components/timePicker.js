@@ -4,18 +4,19 @@ import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 
-const TimePicker = () => {    
+const TimePicker = ({ index }) => {
     return (
         <StoreContext.Consumer>
             {context => (
                 <DatePicker
-                    selected={context.data.date}
-                    onChange={date => context.handleInputChange(date)}
+                    selected={context.data[index].date}
+                    onChange={date => context.handleTimeChange(date, index)}
                     timeInputLabel="Time:"
-                    dateFormat="MM/dd/yyyy h:mm aa"
+                    dateFormat="dd/MM/yyyy HH:mm"
                     showTimeInput
                 />
             )}
+
         </StoreContext.Consumer>
     );
 };

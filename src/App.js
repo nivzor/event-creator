@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import StoreProvider from './store/provider';
 import StoreContext from './store/context';
 import TimePicker from './components/timePicker';
@@ -13,12 +13,12 @@ const InputComp = () => {
                     {context.data.map((x, i) => {
                         return (
                             <div className="box">
-                                <TimePicker />
+                                <TimePicker index={i} />
                                 <input
                                     className="ml10"
-                                    name="lastName"
-                                    placeholder="Enter Last Name"
-                                    value={x.lastName}
+                                    name="information"
+                                    placeholder="Enter Event Information"
+                                    value={x.information}
                                     onChange={e => context.handleInputChange(e, i)}
                                 />
                                 <div className="btn-box">
