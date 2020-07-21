@@ -1,6 +1,6 @@
 {
-    "short_name": "Weather App",
-    "name": "Weather App PWA",
+    "short_name": "Event Creator APP",
+    "name": "Event Creator App PWA",
     "icons": [
         {
             "src": "/images/logo.png",
@@ -10,6 +10,6 @@
     ],
     "start_url": ".",
     "display": "standalone",
-    "theme_color": "#000000",
-    "background_color": "#ffffff"
+    "theme_color": "#9f32ce",
+    "background_color": "#ab8bb3c7"
 }
