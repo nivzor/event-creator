@@ -29,7 +29,7 @@ const StoreProvider = props => {
         return {
             date: date,
             dateUk: extractTime.toUTCString(),
-            dateParse: Date.parse(extractTime.toISOString()),
+            dateParsed: Date.parse(extractTime.toISOString()),
         };
     }
     return (

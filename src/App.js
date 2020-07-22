@@ -3,6 +3,7 @@ import StoreProvider from './store/provider';
 import StoreContext from './store/context';
 import TimePicker from './components/timePicker';
 import JsonViewer from './components/jsonViewer';
+import HtmlViewer from './components/htmlViewer';
 import './App.scss';
 
 
@@ -44,10 +45,10 @@ const DefaultsInputComp = () => {
                 <Fragment>
                     {context.data.defaults.map((x, i) => {
                         return (
-                            <div className="box">                                
+                            <div className="box">
                                 <input
                                     className="defaults-ml10"
-                                    name="def_information"                                    
+                                    name="def_information"
                                     placeholder="Enter default Information"
                                     value={x.def_information}
                                     onChange={e => context.handleInputChange(e, i, 'defaults')}
@@ -56,7 +57,7 @@ const DefaultsInputComp = () => {
                                     {context.data.defaults.length !== 1 && <button
                                         className="defaults-mr10"
                                         onClick={() => context.handleRemoveClick(i, 'defaults')}>Remove</button>}
-                                    {context.data.defaults.length - 1 === i && <button onClick={()=>context.handleAddClick('defaults')}>Add</button>}
+                                    {context.data.defaults.length - 1 === i && <button onClick={() => context.handleAddClick('defaults')}>Add</button>}
                                 </div>
                             </div>
                         );
@@ -67,11 +68,13 @@ const DefaultsInputComp = () => {
     );
 }
 
-const OutputComp = () => {
+const OutputComp = () => {    
     return (
         <StoreContext.Consumer>
-            {context => (
-                <JsonViewer />
+            {context => (                
+                <div>
+                    <JsonViewer />                    
+                </div>
             )}
         </StoreContext.Consumer>
     );
@@ -81,14 +84,17 @@ const App = () => {
     return (
         <StoreProvider>
             <div className="main-container">
-            <h1 className="title">Events Creator for Live Feed (phase 2)</h1>
+                <h1 className="title">Events Creator for Live Feed (phase 2)</h1>
                 <div className="form-side">
                     <h3 className="form-side--title">Events: </h3>
                     <EventsInputComp />
                     <h3 className="form-side--title">Defaults: </h3>
                     <DefaultsInputComp />
                 </div>
-                <div className="output-side">
+                <div className="output-side">                                        
+                    <HtmlViewer />
+                    <hr />
+                    <br/><br/>
                     <OutputComp />
                 </div>
             </div>
