@@ -36,10 +36,10 @@ const StoreProvider = props => {
         <StoreContext.Provider
             value={{
                 data: inputList,
-                handleInputChange: (e, index) => {
+                handleInputChange: (e, index, type) => {
                     const { name, value } = e.target;
                     const list = { events: [...inputList.events], defaults: [...inputList.defaults] };
-                    list['events'][index][name] = value;
+                    list[type][index][name] = value;
                     setInputList(list);
                 },
                 handleTimeChange: (date, index) => {
@@ -47,13 +47,15 @@ const StoreProvider = props => {
                     list['events'][index]['date'] = timeExtractor(date);
                     setInputList(list);
                 },
-                handleRemoveClick: index => {
+                handleRemoveClick: (index, type) => {
                     const list = { events: [...inputList.events], defaults: [...inputList.defaults] };
-                    list['events'].splice(index, 1);
+                    list[type].splice(index, 1);
                     setInputList(list);
                 },
-                handleAddClick: () => {
-                    const list = { events: [...inputList.events, { date: timeExtractor(new Date()), information: "" }], defaults: [...inputList.defaults] };
+                handleAddClick: (type) => {
+                    const list = (type === 'events') 
+                    ? { events: [...inputList.events, { date: timeExtractor(new Date()), information: "" }], defaults: [...inputList.defaults] } 
+                    : { events: [...inputList.events], defaults: [...inputList.defaults, { def_information: "" }] };
                     setInputList(list);
                 }
             }}
