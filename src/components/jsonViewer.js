@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import ReactJson from 'react-json-view'
 import StoreContext from '../store/context';
 import 'react-quill/dist/quill.snow.css';

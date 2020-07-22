@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import StoreProvider from './store/provider';
 import StoreContext from './store/context';
 import TimePicker from './components/timePicker';
-import TextEditor from './components/quillTextEditor';
 import JsonViewer from './components/jsonViewer';
 import './App.scss';
 
@@ -42,16 +41,7 @@ const OutputComp = () => {
     return (
         <StoreContext.Consumer>
             {context => (
-                <Fragment>
-                    {/* <pre style={{ marginTop: 20 }}>                        
-                            {
-                                `<script>var feedDataGaming = ${JSON.stringify(context.data)}</script>`
-                            }                        
-                    </pre> */}
-                    {/* <TextEditor placeholder={'Write something...'} */}
-                    {/* /> */}
-                    <JsonViewer/>
-                </Fragment>
+                <JsonViewer />
             )}
         </StoreContext.Consumer>
     );
@@ -61,6 +51,7 @@ const App = () => {
     return (
         <StoreProvider>
             <div className="main-container">
+            <h1 className="title">Events Creator for Live Feed (phase 2)</h1>
                 <div className="form-side">
                     <h3 className="form-side--title">Event Creator Form</h3>
                     <InputComp />

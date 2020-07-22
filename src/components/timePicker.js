@@ -9,10 +9,10 @@ const TimePicker = ({ index }) => {
         <StoreContext.Consumer>
             {context => (
                 <DatePicker
-                    selected={context.data.events[index].date}
+                    selected={context.data.events[index]['date'].date}
                     onChange={date => context.handleTimeChange(date, index)}
                     timeInputLabel="Time:"
-                    locale="en-UK"                    
+                    locale="en-GB"                    
                     dateFormat="dd/MM/yyyy HH:mm"
                     showTimeInput
                 />

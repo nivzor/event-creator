@@ -16,6 +16,13 @@ body,
     background-position: center;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;;
+    h1.title {
+        flex: 100%;
+        text-align: center;
+        color: #eaeaea;
+        text-shadow: 1px 2px #333;
+    }
 
     .form-side,
     .output-side {
@@ -26,6 +33,7 @@ body,
         justify-content: flex-start;
         padding: 20px;
         border-radius: 3%;
+        overflow: auto;
 
     }
 
@@ -42,7 +50,7 @@ body,
     .output-side {
         background-color: rgba(77, 77, 77, 0.3);
         color: #fff;
-        text-shadow: 1px 2px 0 #000;
+        text-shadow: 0px 0px 5px #000,0px 0px 5px #000,0px 0px 5px #000;
 
         .react-json-view {
             background-color: transparent !important;
