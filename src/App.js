@@ -2,6 +2,8 @@ import React, { Fragment } from 'react';
 import StoreProvider from './store/provider';
 import StoreContext from './store/context';
 import TimePicker from './components/timePicker';
+import TextEditor from './components/quillTextEditor';
+import JsonViewer from './components/jsonViewer';
 import './App.scss';
 
 
@@ -10,7 +12,7 @@ const InputComp = () => {
         <StoreContext.Consumer>
             {context => (
                 <Fragment>
-                    {context.data.map((x, i) => {
+                    {context.data.events.map((x, i) => {
                         return (
                             <div className="box">
                                 <TimePicker index={i} />
@@ -22,10 +24,10 @@ const InputComp = () => {
                                     onChange={e => context.handleInputChange(e, i)}
                                 />
                                 <div className="btn-box">
-                                    {context.data.length !== 1 && <button
+                                    {context.data.events.length !== 1 && <button
                                         className="mr10"
                                         onClick={() => context.handleRemoveClick(i)}>Remove</button>}
-                                    {context.data.length - 1 === i && <button onClick={context.handleAddClick}>Add</button>}
+                                    {context.data.events.length - 1 === i && <button onClick={context.handleAddClick}>Add</button>}
                                 </div>
                             </div>
                         );
@@ -41,11 +43,14 @@ const OutputComp = () => {
         <StoreContext.Consumer>
             {context => (
                 <Fragment>
-                    <div style={{ marginTop: 20 }}>
-                        {                  
-                        `<script>var feedDataGaming = ${JSON.stringify(context.data)}</script>`
-                        }
-                    </div>
+                    {/* <pre style={{ marginTop: 20 }}>                        
+                            {
+                                `<script>var feedDataGaming = ${JSON.stringify(context.data)}</script>`
+                            }                        
+                    </pre> */}
+                    {/* <TextEditor placeholder={'Write something...'} */}
+                    {/* /> */}
+                    <JsonViewer/>
                 </Fragment>
             )}
         </StoreContext.Consumer>
