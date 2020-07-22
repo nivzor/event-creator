@@ -14,7 +14,7 @@ const EventsInputComp = () => {
                 <Fragment>
                     {context.data.events.map((x, i) => {
                         return (
-                            <div className="box">
+                            <div className="box" key={i}>
                                 <TimePicker index={i} />
                                 <input
                                     className="ml10"
@@ -45,7 +45,7 @@ const DefaultsInputComp = () => {
                 <Fragment>
                     {context.data.defaults.map((x, i) => {
                         return (
-                            <div className="box">
+                            <div className="box" key={i}>
                                 <input
                                     className="defaults-ml10"
                                     name="def_information"

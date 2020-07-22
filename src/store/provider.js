@@ -20,16 +20,17 @@ const StoreProvider = props => {
     function timeExtractor(date) {
         var extractTime = date;
         // Truncate to minute precision:
-        var extractTime = new Date(extractTime.getTime() - extractTime.getTime() % 60000);
+        var extractTimeLocal = new Date(extractTime.getTime() - extractTime.getTime() % 60000);
         //console.log('Local time:', extractTime.toString());
         //console.log('UTC time before correction:', extractTime.toISOString());
         // Compensate for the DST shift:
-        var extractTime = compensateDST(extractTime);
+        var extractTimeUTCDST = compensateDST(extractTime);
         //console.log('UTC time  after correction:', extractTime.toISOString());
         return {
             date: date,
-            dateUk: extractTime.toUTCString(),
-            dateParsed: Date.parse(extractTime.toISOString()),
+            dateLocal: extractTime.toString(),
+            dateUk: extractTimeLocal.toUTCString(),
+            dateParsed: Date.parse(extractTimeUTCDST.toISOString()),
         };
     }
     return (
