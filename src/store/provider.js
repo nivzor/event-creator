@@ -27,10 +27,10 @@ const StoreProvider = props => {
         var extractTimeUTCDST = compensateDST(extractTime);
         //console.log('UTC time  after correction:', extractTime.toISOString());
         return {
-            date: date,
+            date: extractTime,
             dateLocal: extractTime.toString(),
-            dateUk: extractTimeLocal.toUTCString(),
-            dateParsed: Date.parse(extractTimeUTCDST.toISOString()),
+            dateUk: extractTimeUTCDST,
+            dateParsed: Date.parse(extractTime),
         };
     }
     return (
