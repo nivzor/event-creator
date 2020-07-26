@@ -84,12 +84,12 @@ const App = () => {
     return (
         <StoreProvider>
             <div className="main-container">
-                <h1 className="title">Events Creator for Live Feed (phase 2)</h1>
+                <h1 className="title">Events Creator for Live Feed 2</h1>
                 <div className="form-side">
                     <h3 className="form-side--title">Events: </h3>
                     <EventsInputComp />
-                    <h3 className="form-side--title">Defaults: </h3>
-                    <DefaultsInputComp />
+                    {/* <h3 className="form-side--title">Defaults: </h3> */}
+                    {/* <DefaultsInputComp /> */}
                 </div>
                 <div className="output-side">                                        
                     <HtmlViewer />
