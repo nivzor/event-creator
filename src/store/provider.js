@@ -20,7 +20,7 @@ const StoreProvider = props => {
     function timeExtractor(date) {
         var extractTime = date;
         // Truncate to minute precision:
-        var extractTimeLocal = new Date(extractTime.getTime() - extractTime.getTime() % 60000);
+        // var extractTimeLocal = new Date(extractTime.getTime() - extractTime.getTime() % 60000);
         //console.log('Local time:', extractTime.toString());
         //console.log('UTC time before correction:', extractTime.toISOString());
         // Compensate for the DST shift:
@@ -39,24 +39,30 @@ const StoreProvider = props => {
                 data: inputList,
                 handleInputChange: (e, index, type) => {
                     const { name, value } = e.target;
-                    const list = { events: [...inputList.events], defaults: [...inputList.defaults] };
+                    // const list = { events: [...inputList.events], defaults: [...inputList.defaults] };
+                    const list = { events: [...inputList.events]};
                     list[type][index][name] = value;
                     setInputList(list);
                 },
                 handleTimeChange: (date, index) => {
-                    const list = { events: [...inputList.events], defaults: [...inputList.defaults] };
+                    // const list = { events: [...inputList.events], defaults: [...inputList.defaults] };
+                    const list = { events: [...inputList.events] };
                     list['events'][index]['date'] = timeExtractor(date);
                     setInputList(list);
                 },
                 handleRemoveClick: (index, type) => {
-                    const list = { events: [...inputList.events], defaults: [...inputList.defaults] };
+                    // const list = { events: [...inputList.events], defaults: [...inputList.defaults] };
+                    const list = { events: [...inputList.events] };
                     list[type].splice(index, 1);
                     setInputList(list);
                 },
                 handleAddClick: (type) => {
+                    // const list = (type === 'events') 
+                    // ? { events: [...inputList.events, { date: timeExtractor(new Date()), information: "" }], defaults: [...inputList.defaults] } 
+                    // : { events: [...inputList.events], defaults: [...inputList.defaults, { def_information: "" }] };
                     const list = (type === 'events') 
-                    ? { events: [...inputList.events, { date: timeExtractor(new Date()), information: "" }], defaults: [...inputList.defaults] } 
-                    : { events: [...inputList.events], defaults: [...inputList.defaults, { def_information: "" }] };
+                    ? { events: [...inputList.events, { date: timeExtractor(new Date()), information: "" }] } 
+                    : { events: [...inputList.events] };
                     setInputList(list);
                 }
             }}

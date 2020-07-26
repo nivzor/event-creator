@@ -38,35 +38,35 @@ const EventsInputComp = () => {
     );
 }
 
-const DefaultsInputComp = () => {
-    return (
-        <StoreContext.Consumer>
-            {context => (
-                <Fragment>
-                    {context.data.defaults.map((x, i) => {
-                        return (
-                            <div className="box" key={i}>
-                                <input
-                                    className="defaults-ml10"
-                                    name="def_information"
-                                    placeholder="Enter default Information"
-                                    value={x.def_information}
-                                    onChange={e => context.handleInputChange(e, i, 'defaults')}
-                                />
-                                <div className="btn-box">
-                                    {context.data.defaults.length !== 1 && <button
-                                        className="defaults-mr10"
-                                        onClick={() => context.handleRemoveClick(i, 'defaults')}>Remove</button>}
-                                    {context.data.defaults.length - 1 === i && <button onClick={() => context.handleAddClick('defaults')}>Add</button>}
-                                </div>
-                            </div>
-                        );
-                    })}
-                </Fragment>
-            )}
-        </StoreContext.Consumer>
-    );
-}
+// const DefaultsInputComp = () => {
+//     return (
+//         <StoreContext.Consumer>
+//             {context => (
+//                 <Fragment>
+//                     {context.data.defaults.map((x, i) => {
+//                         return (
+//                             <div className="box" key={i}>
+//                                 <input
+//                                     className="defaults-ml10"
+//                                     name="def_information"
+//                                     placeholder="Enter default Information"
+//                                     value={x.def_information}
+//                                     onChange={e => context.handleInputChange(e, i, 'defaults')}
+//                                 />
+//                                 <div className="btn-box">
+//                                     {context.data.defaults.length !== 1 && <button
+//                                         className="defaults-mr10"
+//                                         onClick={() => context.handleRemoveClick(i, 'defaults')}>Remove</button>}
+//                                     {context.data.defaults.length - 1 === i && <button onClick={() => context.handleAddClick('defaults')}>Add</button>}
+//                                 </div>
+//                             </div>
+//                         );
+//                     })}
+//                 </Fragment>
+//             )}
+//         </StoreContext.Consumer>
+//     );
+// }
 
 const OutputComp = () => {    
     return (
