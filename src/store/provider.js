@@ -5,7 +5,7 @@ const StoreProvider = props => {
     const [inputList, setInputList] = useState(
         {
             events: [{ date: timeExtractor(new Date()), information: "" }],
-            defaults: [{ def_information: "" }]
+            // defaults: [{ def_information: "" }]
         }
     );
 
