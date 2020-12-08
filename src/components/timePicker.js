@@ -7,13 +7,13 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 registerLocale("en-GB", gb); 
 
-const TimePicker = ({ index }) => {
+const TimePicker = ({ index, type }) => {
     return (
         <StoreContext.Consumer>
             {context => (
                 <DatePicker
                     selected={context.data.events[index]['date'].date}
-                    onChange={date => context.handleTimeChange(date, index)}
+                    onChange={date => context.handleTimeChange(date, index, type)}
                     timeInputLabel="Time:"
                     locale="en-GB"                 
                     dateFormat="dd/MM/yyyy HH:mm"

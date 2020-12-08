@@ -4,8 +4,9 @@ import StoreContext from './context';
 const StoreProvider = props => {
     const [inputList, setInputList] = useState(
         {
-            events: [{ date: timeExtractor(new Date()), information: "" }],
-            // defaults: [{ def_information: "" }]
+            type: 'feedPhaseData',
+            title: 'Events',
+            events: [{ date: timeExtractor(new Date()), information: "" }],            
         }
     );
 
@@ -35,34 +36,40 @@ const StoreProvider = props => {
     }
     return (
         <StoreContext.Provider
-            value={{
+            value={{                
                 data: inputList,
                 handleInputChange: (e, index, type) => {
                     const { name, value } = e.target;
-                    // const list = { events: [...inputList.events], defaults: [...inputList.defaults] };
-                    const list = { events: [...inputList.events]};
-                    list[type][index][name] = value;
+                    const list = (type === 'events') 
+                    ? { type: 'feedPhaseData', title: 'Events', events: [...inputList.events] }
+                    : { type: 'feedPhaseDataMatches', title: 'Matches', events: [...inputList.events] };
+                    list.events[index][name] = value;
                     setInputList(list);
                 },
-                handleTimeChange: (date, index) => {
-                    // const list = { events: [...inputList.events], defaults: [...inputList.defaults] };
-                    const list = { events: [...inputList.events] };
-                    list['events'][index]['date'] = timeExtractor(date);
+                handleTimeChange: (date, index, type) => {
+                    const list = (type === 'events') 
+                    ? { type: 'feedPhaseData', title: 'Events', events: [...inputList.events] }
+                    : { type: 'feedPhaseDataMatches', title: 'Matches', events: [...inputList.events] };                    
+                    list.events.index['date'] = timeExtractor(date);
                     setInputList(list);
                 },
-                handleRemoveClick: (index, type) => {
-                    // const list = { events: [...inputList.events], defaults: [...inputList.defaults] };
-                    const list = { events: [...inputList.events] };
-                    list[type].splice(index, 1);
+                handleRemoveClick: (index, type) => {                    
+                    const list = (type === 'events') 
+                    ? { type: 'feedPhaseData', title: 'Events', events: [...inputList.events] }
+                    : { type: 'feedPhaseDataMatches', title: 'Matches', events: [...inputList.events] };
+                    list.events.splice(index, 1);
                     setInputList(list);
                 },
                 handleAddClick: (type) => {
-                    // const list = (type === 'events') 
-                    // ? { events: [...inputList.events, { date: timeExtractor(new Date()), information: "" }], defaults: [...inputList.defaults] } 
-                    // : { events: [...inputList.events], defaults: [...inputList.defaults, { def_information: "" }] };
                     const list = (type === 'events') 
-                    ? { events: [...inputList.events, { date: timeExtractor(new Date()), information: "" }] } 
-                    : { events: [...inputList.events] };
+                    ? { type: 'feedPhaseData', title: 'Events', events: [...inputList.events, { date: timeExtractor(new Date()), information: "" }] } 
+                    : { type: 'feedPhaseDataMatches', title: 'Matches', events: [...inputList.events, { date: timeExtractor(new Date()), club1: "", club2: "" }] };                    
+                    setInputList(list);
+                },
+                handleTypeChange: (type) => {
+                    const list = (type === 'events') 
+                    ? {type: 'feedPhaseData', title: 'Events', events: [{ date: timeExtractor(new Date()), information: "" }]} 
+                    : {type: 'feedPhaseDataMatches', title: 'Matches', events: [{ date: timeExtractor(new Date()), club1: "", club2: "" }]};
                     setInputList(list);
                 }
             }}
