@@ -4,11 +4,14 @@ import Prism from "prismjs";
 import '../style/prism.css';
 
 class HtmlViewer extends React.Component {
+    constructor(props) {
+        super(props);         
+    }
     componentDidMount() {
         Prism.highlightAll();
     }
     componentDidUpdate() {
-        Prism.highlightAll();
+        Prism.highlightAll();        
     }
     static contextType = StoreContext;
 
@@ -16,13 +19,9 @@ class HtmlViewer extends React.Component {
         return (
             <pre>
                 <code className="language-html">
-{
-`
-<script>
-var feedPhaseData = 
-${JSON.stringify(this.context.data, null, 4)}
-</script>
-`}
+                    {`<script>
+var ${this.context.data.type} = {"events": ${JSON.stringify(this.context.data.events, null, 4)}}
+</script>`}
                 </code>
             </pre>
         )

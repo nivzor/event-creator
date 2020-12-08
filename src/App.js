@@ -15,7 +15,7 @@ const EventsInputComp = () => {
                     {context.data.events.map((x, i) => {
                         return (
                             <div className="box" key={i}>
-                                <TimePicker index={i} />
+                                <TimePicker index={i} type="events"/>
                                 <input
                                     className="ml10"
                                     name="information"
@@ -38,35 +38,44 @@ const EventsInputComp = () => {
     );
 }
 
-// const DefaultsInputComp = () => {
-//     return (
-//         <StoreContext.Consumer>
-//             {context => (
-//                 <Fragment>
-//                     {context.data.defaults.map((x, i) => {
-//                         return (
-//                             <div className="box" key={i}>
-//                                 <input
-//                                     className="defaults-ml10"
-//                                     name="def_information"
-//                                     placeholder="Enter default Information"
-//                                     value={x.def_information}
-//                                     onChange={e => context.handleInputChange(e, i, 'defaults')}
-//                                 />
-//                                 <div className="btn-box">
-//                                     {context.data.defaults.length !== 1 && <button
-//                                         className="defaults-mr10"
-//                                         onClick={() => context.handleRemoveClick(i, 'defaults')}>Remove</button>}
-//                                     {context.data.defaults.length - 1 === i && <button onClick={() => context.handleAddClick('defaults')}>Add</button>}
-//                                 </div>
-//                             </div>
-//                         );
-//                     })}
-//                 </Fragment>
-//             )}
-//         </StoreContext.Consumer>
-//     );
-// }
+const MatchesInputComp = () => {
+    return (
+        <StoreContext.Consumer>
+            {context => (
+                <Fragment>
+                    {context.data.events.map((x, i) => {
+                        return (
+                            <div className="box" key={i}>
+                                <TimePicker index={i} type="matches"/>
+                                <input
+                                    className="matches-ml10"
+                                    name="club1"
+                                    placeholder="Enter home Name"
+                                    value={x.club1}
+                                    onChange={e => context.handleInputChange(e, i, 'matches')}
+                                />
+                                <label className="vs-label"> VS </label>
+                                <input
+                                    className="matches-ml10"
+                                    name="club2"
+                                    placeholder="Enter away name"
+                                    value={x.club2}
+                                    onChange={e => context.handleInputChange(e, i, 'matches')}
+                                />
+                                <div className="btn-box">
+                                    {context.data.events.length !== 1 && <button
+                                        className="matches-mr10"
+                                        onClick={() => context.handleRemoveClick(i, 'matches')}>Remove</button>}
+                                    {context.data.events.length - 1 === i && <button onClick={() => context.handleAddClick('matches')}>Add</button>}
+                                </div>
+                            </div>
+                        );
+                    })}
+                </Fragment>
+            )}
+        </StoreContext.Consumer>
+    );
+}
 
 const OutputComp = () => {    
     return (
@@ -79,17 +88,39 @@ const OutputComp = () => {
         </StoreContext.Consumer>
     );
 }
-
+const TypeSelector = () => {
+    return (
+        <StoreContext.Consumer>
+            {context => (                
+                <div className="title">
+                    <div>Events Creator </div>
+                    <span onClick={()=> context.handleTypeChange('events')}>Live Feed 2 </span>
+                    <span onClick={()=> context.handleTypeChange('matches')}>Matches Top 3 Feed</span>
+                </div>
+            )}
+        </StoreContext.Consumer>
+    );   
+}
+const FormByType = () => {
+    return (
+          <StoreContext.Consumer>
+            {context => (                
+                <Fragment>
+                    <h3 className="form-side--title">{context.data.title}:</h3>
+                    {context.data.type === 'feedPhaseData' && <EventsInputComp />}
+                    {context.data.type === 'feedPhaseDataMatches' && <MatchesInputComp />}
+                </Fragment>
+            )}
+        </StoreContext.Consumer>
+    )
+}
 const App = () => {
     return (
         <StoreProvider>
             <div className="main-container">
-                <h1 className="title">Events Creator for Live Feed 2</h1>
+                <TypeSelector />
                 <div className="form-side">
-                    <h3 className="form-side--title">Events: </h3>
-                    <EventsInputComp />
-                    {/* <h3 className="form-side--title">Defaults: </h3> */}
-                    {/* <DefaultsInputComp /> */}
+                    <FormByType />                    
                 </div>
                 <div className="output-side">                                        
                     <HtmlViewer />
