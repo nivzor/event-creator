@@ -4,9 +4,6 @@ import Prism from "prismjs";
 import '../style/prism.css';
 
 class HtmlViewer extends React.Component {
-    constructor(props) {
-        super(props);         
-    }
     componentDidMount() {
         Prism.highlightAll();
     }
