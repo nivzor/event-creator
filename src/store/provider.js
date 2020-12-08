@@ -50,7 +50,7 @@ const StoreProvider = props => {
                     const list = (type === 'events') 
                     ? { type: 'feedPhaseData', title: 'Events', events: [...inputList.events] }
                     : { type: 'feedPhaseDataMatches', title: 'Matches', events: [...inputList.events] };                    
-                    list.events.index['date'] = timeExtractor(date);
+                    list.events[index]['date'] = timeExtractor(date);
                     setInputList(list);
                 },
                 handleRemoveClick: (index, type) => {                    

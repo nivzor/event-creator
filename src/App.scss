@@ -19,14 +19,30 @@ body,
     flex-wrap: wrap;
     ;
 
-    div.title {
+    .title {
         flex: 100%;
-        text-align: center;
         color: #eaeaea;
         font-size: 2em;
         text-shadow: 1px 2px #333;
         text-transform: uppercase;
-        text-decoration: underline;
+        padding: 0 2.5%;
+
+        div {
+            text-align: center;
+            text-decoration: underline;
+        }
+        span {
+            cursor: pointer;
+            font-size: 1em;
+            border: 1px solid #eee;
+            padding: 2px 5px;
+            &:nth-child(2) {
+                margin-right: 20px;
+            }
+            &:hover {
+                background-color: rgba(191, 137, 212, 0.4);
+            }
+        }
     }
 
     .form-side,
@@ -57,10 +73,17 @@ body,
             display: flex;
             justify-content: flex-start;
             align-content: flex-start;
+            align-items: center;
         }
 
         .btn-box {
             margin-left: 5px;
+        }
+        .vs-label {
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 3px 3px #b84fd5, -1px -1px #e089ff, -1px 1px #4a20e1;
+            padding: 0 10px;
         }
     }
 

@@ -54,7 +54,7 @@ const MatchesInputComp = () => {
                                     value={x.club1}
                                     onChange={e => context.handleInputChange(e, i, 'matches')}
                                 />
-                                <label> VS </label>
+                                <label className="vs-label"> VS </label>
                                 <input
                                     className="matches-ml10"
                                     name="club2"
@@ -95,7 +95,6 @@ const TypeSelector = () => {
                 <div className="title">
                     <div>Events Creator </div>
                     <span onClick={()=> context.handleTypeChange('events')}>Live Feed 2 </span>
-                    &nbsp;|&nbsp;
                     <span onClick={()=> context.handleTypeChange('matches')}>Matches Top 3 Feed</span>
                 </div>
             )}

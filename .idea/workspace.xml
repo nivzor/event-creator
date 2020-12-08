@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="761bac06-6b45-4025-b762-f6ea5a239a9b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/htmlViewer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/htmlViewer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/timePicker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/timePicker.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/provider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/provider.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +42,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1607434004111</updated>
-      <workItem from="1607434008169" duration="976000" />
+      <workItem from="1607434008169" duration="3615000" />
     </task>
     <servers />
   </component>
